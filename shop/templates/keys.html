@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script src="/static/jQuery/jquery-3.6.0.js"></script>
+    </head>
+
+
+
+   
+    <span class='h1'>-</span>
+    <span class="s1" style="cursor:pointer">+</span>
+
+    <div id='o1'>
+
+    </div>
+
+
+  
+
+<script>
+    $(function(){
+     
+      $('.s1').click(function(){
+        $.getJSON("/order",function(response){
+        
+          var s = "";
+          var t =0
+          for(i in response){
+            s += "<tr><td>"+ response[i].pname + "</td>"+"<td>"+response[i].price+"</td></tr>";
+            t += response[i].price;
+          }
+          s += "<tr><td>Total</td><td>"+t+"</td></tr>";
+          s= "<table border='1'>"+s+"</table>";          
+          $("#o1").append(s);
+
+        })
+      });
+
+
+
+      $('.h1').click(function(){
+       
+     
+    });
+
+      });
+    </script>
+</html>

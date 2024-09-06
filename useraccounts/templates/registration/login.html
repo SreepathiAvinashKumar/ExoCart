@@ -1,0 +1,56 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+{% block header %}
+{% load static tailwind_tags %}
+
+<head>
+    {% load static %}
+    {% tailwind_css %}
+</head>
+
+<style>
+    body{
+        background-image: url("/static/icons/undraw_web_shopping_re_owap.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+{% include 'include/navbar2.html' %}
+{% endblock %}
+
+
+{% block content %}
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{{form.errors }}
+{% endif %} 
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    <p class="alert alert-warning">Please login to see this page.</p>
+    {% endif %}
+{% endif %}
+
+
+<div class="mb-3" style="padding: 10px 0 0 0 ; display: flex; justify-content: center;">
+    <h1 style="font-family:cursive;">Bliz-Cart</h1><br>
+</div>
+<div class="mb-3" style="display: flex; justify-content: center; padding: 90px 0 110px 0;">
+<form method="post" action="{% url 'user:login' %}" >
+{% csrf_token %}
+
+
+{{form| crispy}}
+
+
+<div class="mb-3" style="padding: 20px 60px 20px 60px;">
+<input type="submit" value="login" class="btn bg-red mb-3">
+</div>
+<input type="hidden" name="next" value="{{ next }}">
+</form>
+</div>
+
+{% endblock %}

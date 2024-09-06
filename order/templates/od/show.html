@@ -1,0 +1,33 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block header %}
+
+{% include 'include/navbar2.html' %}
+{% endblock %}
+
+{% block content %}
+
+<table class="table" style="margin: 5px 5px 2px 15px;">
+    <thead class="table-dark">
+      <tr>
+        <th>Product</th>
+       <th>Product Name</th>
+       <th>Product Price</th>
+        </tr>
+    </thead>
+    <tbody >
+{% for i in oitems %}
+
+<tr style="background-color:whitesmoke; backdrop-filter: blur(5px) ;">
+  
+    <td><img src="{{i.product.image.url}}" class="card-img-top" alt="..." style="margin-left: 10px; width:150px; height:120px;"> </td>
+    <div class="content" style="margin-top: 5px;">
+    <td style="font-size: 1.1em; font-weight: 500;">{{i.product.product_Name}}</td>
+    <td style="font-size: 1.1em; font-weight: 500;">{{i.product.product_price}}/-</td>
+  </div>
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'home.html' %}
+
+{% block header %}
+{% include 'include/navbar2.html' %}
+{% include 'include/messages.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="singup" style="padding-left: 150px; padding-right: 200px; ">
+<!-- <h3 class="display-5" style="text-align:center;">Product Details</h3> -->
+<form action="{% url 'shop:sell' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="mb-3">   
+<label for="productname">Product Name: </label>
+<input type="text"  id="productname"  name="pname" class="form-control"><br>
+</div>
+
+<div class="mb-3">
+<label for="productprice" class="form-label">Product Price: </label>
+<input type="number" name="pprice" id="productprice" class="form-control"><br>
+</div>
+
+<div class="mb-3">
+<label for="productcategory"  class="form-label">Category</label>
+<select name="pcategory" id="productcategory">
+    {% for cat in category %}
+    <option value="{{cat.id}}">{{cat.category_name}}</option>
+    {% endfor %}
+</select><br>
+</div>
+
+<br>
+
+<!-- <div class="mb-3">
+{{form}}
+</div> -->
+
+<!-- <input type="file" name="file" id="id_image" accept="image/*">
+
+<input type="file" name="file" id="id_image2" accept="image/*">
+
+<input type="file" name="file" id="id_image3" accept="image/*">
+
+<input type="file" name="file" id="id_image4" accept="image/*">
+<input type="file" name="file" id="id_image5" accept="image/*">
+<input type="file" name="file" id="id_image6" accept="image/*"> 
+ -->
+
+
+
+<div class="mb-3">
+<label for="tag" class="form-label">Tags</label>
+<input type="text" class="form-control" id="tag" name="tags"> <br>
+</div>
+
+
+<label for="desc" class="description">Product Description</label><br>
+<textarea name="description" id="desc" cols="30" rows="6" style="resize: none;"></textarea>
+<br>
+
+
+<input type="submit" id="submit" class="btn btn-primary">
+</form>
+</div>
+{% endblock %}

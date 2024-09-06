@@ -1,0 +1,39 @@
+{% extends 'home.html' %}
+
+{% block header %}
+{% include 'include/navbar2.html'  %}
+{% include 'include/messages.html' %}
+<style>
+    body{
+     background-color: rgb(49, 47, 47); 
+    }
+</style>
+{% endblock  %}
+
+{% block content %}
+
+<div class="singup" style="padding: 15px 150px 15px 150px; background-color: whitesmoke; border-radius: 10px; backdrop-filter: blur(10px); margin: 25px 25px 25px 25px;">
+    <h1 class="display-5" style="text-align: center; padding: 15px 0 15px 0; font-weight: 500;">Create an Account</h1>
+<form action="{% url 'user:signup' %}" method="post">
+    {% csrf_token %}
+<div class="mb-3">   
+<label for="username">Username: </label>
+<input type="text"  id="username"  name="uname" class="textInput textinput form-control"><br>
+</div>
+
+<div class="mb-3">
+<label for="password" class="form-label">Password: </label>
+<input type="password" name="password" id="password" class="form-control"><br>
+</div>
+
+<div class="mb-3">
+<label for="email"  class="form-label">Email: </label>
+<input type="email" name="email" id="email" class="form-control"> <br>
+</div>
+
+<div class="mb-3" style="text-align: center; align-items: center;">
+<input type="submit" id="submit" class="btn btn-primary" >
+</div>
+</form>
+</div>
+{% endblock %}

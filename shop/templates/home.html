@@ -1,0 +1,85 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    {% load static %}
+    {% load humanize %}
+    {% tailwind_css %}
+    
+    <!-- <link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet"> -->
+ 
+    <style>
+
+*{
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+      @media (max-width:500px){
+         *{
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+         }     
+      }
+    </style>
+
+</head>
+<body>
+  {% load crispy_forms_tags %}  
+{% block header %}
+<!-- {% include 'include/navbar.html'  %} -->
+{% include 'include/navbar2.html'  %}
+{% endblock %}
+
+
+{% block content %}
+{% include 'include/cursole.html' %}
+{% include 'include/promo.html' %}
+
+
+<div class="bg-white">
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <!-- <h2 class="sr-only">Products</h2> -->
+
+    <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+
+      {% for product in products %}
+     
+      <a href="{% url 'shop:product' product.id %}" class="group">
+        <div class="aspect-h-10 aspect-w-16 h-[3rem] overflow-hidden rounded-lg bg-white-200 xl:aspect-h-10 xl:aspect-w-16">
+         
+            <img src="{{product.image.url}}" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="h-full w-full object-contain object-center group-hover:opacity-75">
+         
+        </div>
+        <h3 class="mt-4 text-sm text-gray-700">{{ product.product_Name|truncatewords:14 }}
+        </h3>
+        <p class="mt-1 text-lg font-medium text-gray-900"></p>
+      </a> 
+    
+     {% endfor %}
+    </div>
+    {% include 'include/productsrow.html' %}  
+    {% include 'include/productcategory.html' %}  
+  </div>
+</div>
+
+{% include 'include/footer.html' %}  
+  </div>
+</div>
+
+
+
+{% endblock %}  
+<!-- <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script> -->
+<script src="{% static 'node_modules/preline/dist/preline.js' %}"></script>
+
+</body>
+</html>
+ 

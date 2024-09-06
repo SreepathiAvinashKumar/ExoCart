@@ -1,0 +1,58 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load static tailwind_tags %}
+
+
+{% block header %}
+{% tailwind_css %}
+    
+<style>
+    .razorpay-payment-button{
+        background-color: #473BF0;
+        font-size: 1.2em;
+        border-radius: 7%; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 600;
+        padding: 8px 8px 8px 8px;
+        margin: 10px 10px 10px 10px; 
+        color: white;
+        border:none;
+    }
+
+</style>
+{% include 'include/navbar2.html' %}
+{% endblock %}
+
+
+{% block content %}
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{{form.errors }}
+{% endif %}
+
+
+<div class="mb-3" style="display: flex; justify-content:left; padding: 50px 0 0px 130px; background-color: whitesmoke; border-radius: 10px; ">
+<form method="post" action="{% url 'cart:pay' %}" >
+    
+    {% csrf_token %}
+
+
+<script
+    src="https://checkout.razorpay.com/v1/checkout.js"
+    data-key="rzp_test_JEOWdxgp4rEZpG" 
+    data-amount="{{50000}}" 
+    data-currency="INR"
+    data-order_id="{{payment.id}}"
+    
+    data-name="Bliz-Cart"
+    data-description="It is the Ecommerce Website"
+    data-image="/static/icons/icon.png"
+    data-prefill.name="Gaurav Kumar"
+    data-prefill.email="sample@example.com"
+    data-theme.color="#F37254"
+></script>
+
+</form>
+</div>
+{% endblock %}

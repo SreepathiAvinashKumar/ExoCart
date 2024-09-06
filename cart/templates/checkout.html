@@ -1,0 +1,50 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load static tailwind_tags %}
+
+{% block header %}
+<style>
+    .razorpay-payment-button{
+        background-color: #473BF0;
+        font-size: 1.2em;
+        border-radius: 7%; 
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 600;
+        padding: 8px 8px 8px 8px;
+        margin: 10px 10px 10px 10px; 
+        color: white;
+        border:none;
+    }   
+
+</style>
+{% include 'include/navbar2.html' %}
+{% endblock %}
+
+
+{% block content %}
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{{form.errors }}
+{% endif %}
+
+
+<div class="mb-3" style="padding: 10px 0 0 0 ; display: flex; justify-content: center; background-color: whitesmoke; backdrop-filter: blur(5px);">
+    <h1 style="font-family:cursive;">Checkout Page</h1><br>
+</div>
+<div class="mb-3" style="display: flex; justify-content:left; padding: 50px 0 0px 130px; background-color: whitesmoke; border-radius: 10px; ">
+<form method="post" action="{% url 'cart:checkout' %}" >
+    
+      {% csrf_token %}
+
+    {{ form|crispy}}
+    
+<div class="mb-3" style="padding: 20px 60px 20px 60px;">
+<input id="buttentext" type="submit" value="Checkout" class="btn btn-primary mb-3">
+</div>
+
+
+</form>
+</div>
+
+{% endblock %}

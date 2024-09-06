@@ -1,0 +1,30 @@
+{% extends 'home.html' %}
+{% load humanize %}
+{% block header %}
+{% include 'include/navbar2.html' %}
+{% endblock %}
+
+
+{% block content %}
+{% for product in products %}
+
+   
+      
+        
+        <a href="{% url 'shop:product' product.id %}"  class="link-dark" style="text-decoration: none;">
+            <div class="card" style=" display: inline-block;text-align: center; width:310px; margin: 10px;">
+            <img src="{{product.image.url}}" class="card-img-top" alt="..." style="width:50%; height:70%; margin-top: 15px;">
+            <div class="card-body" style="word-spacing: 1px; flex-wrap: wrap;">
+              <h5 class="card-title" style="font-size: 1.12em;">{{product.product_Name}}</h5>
+              <h6 class="card-text">Rs: {{product.product_price}}</h6>
+              <!-- <a href="#" class="btn btn-primary">Cart</a> -->
+            </div>
+          </div>
+        
+     
+  
+
+  
+{% endfor %}
+
+{% endblock %}

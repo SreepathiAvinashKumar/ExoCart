@@ -1,0 +1,59 @@
+{% extends 'home.html' %}
+{% load humanize %}
+{% block header %}
+{% include 'include/navbar2.html' %}
+{% endblock %}
+
+{% block content %}
+
+
+
+<table class="table" style="margin: 5px 5px 2px 15px;">
+  <thead class="table-dark">
+    <tr>
+      <th>Product</th>
+     <th>Product Name</th>
+     <th>Product Price</th>
+     <th>Remove</th>
+     <th>Cart</th>
+      </tr>
+  </thead>
+  <tbody >
+    {% for i in wl_items %}
+
+<tr style="background-color:whitesmoke; backdrop-filter: blur(5px) ;">
+  
+  <td > <img src="{{i.product.image.url}}" class="card-img-top" alt="..." style="margin-left: 10px; width:150px; height:120px;"> </td>
+  <div class="content" style="margin-top: 5px;">
+  <td>{{i.product.product_Name}}</td>
+  <td>{{i.product.product_price}}/-</td>
+  <td><a href="{% url 'whishlist:remove' i.id %}" class="btn btn-primary">Remove</a></td>
+  <td><a type="button" class="btn btn-warning " href="{% url 'cart:add' i.product.id %}" >ADD TO CART</a></td>
+</div>
+</tr>
+{% endfor %}
+  </tbody>
+</table>
+
+
+
+{% endblock %}
+
+
+
+
+<!-- {% for i in wl_items %} -->
+
+<!-- 
+<div class="whishlistitem" style="width: 100%; height: 100%;">
+<div  style="width: 10rem; height: 6rem; display: inline-block; margin: 5px 15px 4px 15px;">
+    <img src="{{i.product.image.url}}" class="card-img-top" alt="..." style="margin-left: 10px;"> 
+    <div  style="margin-left:26px; margin-right:0; margin-bottom: 0; margin-top: 0; width: 100%; height: 100%;">
+      <h5 class="card-title">{{i.product.product_Name}}</h5>
+      <p class="card-text">Rs:{{i.product.product_price}}</p>
+      <a href="{% url 'whishlist:remove' i.id %}" class="btn btn-primary">Remove</a>
+    </div>
+  </div>
+</div> -->
+
+<!-- {% endfor %} -->
