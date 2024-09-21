@@ -19,7 +19,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['exocart.onrender.com']
 
-CSRF_TRUSTED_ORIGINS = ["https://api.razorpay.com/",'http://localhost:8000',]
+CSRF_TRUSTED_ORIGINS = ["https://api.razorpay.com/",'http://localhost:8000','exocart.onrender.com']
 
 
 # Application definition
