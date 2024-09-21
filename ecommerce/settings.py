@@ -15,7 +15,7 @@ SECRET_KEY = 'django-insecure-y!@*7qu3&#0%pc3nvk(3af3iu_3mcwmxs47l_coxeyucm0etr2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','.vercel.app']
 
 CSRF_TRUSTED_ORIGINS = ["https://api.razorpay.com/",'http://localhost:8000',]
 
