@@ -1,3 +1,4 @@
+![image](https://github.com/SreepathiAvinashKumar/ExoCart/blob/master/Website%20images/Screenshot1.png?raw=true)
 ExoCart is a comprehensive e-commerce website designed to facilitate seamless user and seller interactions. Built using Django as the backend framework and styled with **Django-Tailwind**, the platform provides a modern, responsive, and highly scalable solution for online shopping experiences. This project includes a variety of essential e-commerce features, aimed at improving both the user experience and system efficiency for buyers and sellers.
 
 One of the core functionalities allows sellers to easily add items to the platform, with detailed product descriptions, pricing, and image uploads made possible through the **Pillow** Python library. Buyers can browse products and utilize key features like **Add to Cart** and **Wishlist**, offering flexibility for saving their favorite products for future purchases.
